@@ -1,0 +1,1 @@
+insert into tbl_user(Ssn,FName,LName,email,isActive) values(?,?,?,?,?);

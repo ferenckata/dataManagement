@@ -1,0 +1,1 @@
+CREATE TABLE Webpage(id serial primary key, Url varchar, Author integer, content varchar, popularity integer, foreign key (Author) references tbl_user(id), check (popularity>=0 and popularity<= 100) );

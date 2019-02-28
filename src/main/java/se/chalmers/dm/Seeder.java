@@ -24,7 +24,9 @@ public class Seeder {
     }
 
     public int createUserTable() throws SQLException {
-       int update = stmt.executeUpdate("CREATE TABLE tbl_user(ID serial primary key,Ssn char(11),FName varchar,LName varchar ,email varchar ,isActive boolean);");
+
+       String query = QueryHelper.sqlQuery("create_user_table.sql");
+       int update = stmt.executeUpdate(query);
        return update;
     }
 
@@ -36,7 +38,8 @@ public class Seeder {
             String ssn = faker.idNumber().ssnValid();
             String email = faker.internet().emailAddress();
             boolean isActive = faker.bool().bool();
-            PreparedStatement pstmt = c.prepareStatement("insert into tbl_user(Ssn,FName,LName,email,isActive) values(?,?,?,?,?);");
+            String query = QueryHelper.sqlQuery("insert_user.sql");
+            PreparedStatement pstmt = c.prepareStatement(query);
             pstmt.setString(1,ssn);
             pstmt.setString(2,fname);
             pstmt.setString(3,lname);
@@ -52,7 +55,8 @@ public class Seeder {
 
 
     public int createWebPageTable() throws SQLException {
-        int update = stmt.executeUpdate("CREATE TABLE Webpage(id serial primary key, Url varchar, Author integer, content varchar, popularity integer, foreign key (Author) references tbl_user(id), check (popularity>=0 and popularity<= 100) );");
+        String query = QueryHelper.sqlQuery("create_webpage_table.sql");
+        int update = stmt.executeUpdate(query);
         return update;
     }
 
@@ -64,7 +68,8 @@ public class Seeder {
             String content = faker.chuckNorris().fact();
             double popularity= Math.random()*100;
             String Url= faker.internet().url();
-            PreparedStatement pstmt = c.prepareStatement("insert into WebPage(Url, Author, content, popularity )values(?,?,?,?);" );
+            String query = QueryHelper.sqlQuery("insert_webpage.sql");
+            PreparedStatement pstmt = c.prepareStatement(query );
             pstmt.setString(1,Url);
             pstmt.setInt(2,i);
             pstmt.setString(3,content);

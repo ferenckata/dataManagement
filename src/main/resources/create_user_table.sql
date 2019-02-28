@@ -1,0 +1,1 @@
+CREATE TABLE tbl_user(ID serial primary key,Ssn char(11),FName varchar,LName varchar ,email varchar ,isActive boolean);
