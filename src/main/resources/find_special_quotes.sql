@@ -1,0 +1,1 @@
+select content  from webpage where upper (content) like upper ('%When%');
