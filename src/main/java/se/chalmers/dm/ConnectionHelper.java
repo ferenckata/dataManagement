@@ -9,8 +9,7 @@ public class ConnectionHelper {
     // DB connection configuration
     private static String DRIVER_CLASS = "org.postgresql.Driver";
     private static String DB_USER = "postgres";
-    //ToDo: change password back to empty string before submission
-    private static String DB_PASSWORD = "bemegyek";
+    private static String DB_PASSWORD = "";
     private static String DB_URL = "jdbc:postgresql://localhost:5432/websitedb";
 
     public static Connection createPostgresConnection() throws ClassNotFoundException, SQLException {
